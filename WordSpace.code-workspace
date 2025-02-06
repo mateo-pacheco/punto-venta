@@ -1,0 +1,23 @@
+{
+	"folders": [
+		{
+			"path": "eureka-server"
+		},
+		{
+			"path": "msvc-clientes"
+		},
+		{
+			"path": "msvc-inventario"
+		},
+		{
+			"path": "msvc-registro-ventas"
+		},
+		{
+			"path": "msvc-reporte-ventas"
+		}
+	],
+	"settings": {
+		"java.compile.nullAnalysis.mode": "automatic",
+		"java.configuration.updateBuildConfiguration": "interactive"
+	}
+}
