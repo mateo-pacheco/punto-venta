@@ -1,0 +1,117 @@
+resilience4j:
+  circuitbreaker:
+    configs:
+      defecto:
+        sliding-window-size: 6
+        failure-rate-threshold: 50
+        wait-duration-in-open-state: 20s
+        permitted-number-of-calls-in-half-open-state: 4
+        slow-call-duration-threshold: 4s
+        slow-call-rate-threshold: 50
+    instances:
+      default:
+        base-config: defecto
+  timelimiter:
+    configs:
+      defecto:
+        timeout-duration: 6s
+    instances:
+      default:
+        base-config: defecto
+
+spring:
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://127.0.0.1:9000
+      client:
+        registration:
+          client-app:
+            provider: spring
+            client-id: gateway-app
+            client-secret: 1234
+            authorization-grant-type: authorization_code
+            redirect-uri: http://127.0.0.1:8090/authorized
+            scope:
+            - openid
+            - profile
+            client-name: client-app
+        provider:
+          spring:
+            issuer-uri: http://127.0.0.1:9000
+  cloud:
+    gateway:
+      routes:
+        - id: msvc-oauth
+          uri: lb://msvc-oauth
+          predicates:
+            - Path=/api/security/**
+          filters:
+          - StripPrefix=2
+        - id: msvc-users
+          uri: lb://msvc-users
+          predicates:
+            - Path=/api/admin/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: default
+                statusCodes: 500
+                fallbackUri: forward:/api/inventario/products/getByProductId/Pantaloneta123
+            - StripPrefix=2
+        - id: msvc-clientes
+          uri: lb://msvc-clientes
+          predicates:
+            - Path=/api/usuario/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: default
+                statusCodes: 500
+                fallbackUri: forward:/api/inventario/products/getByProductId/Pantaloneta123
+            - StripPrefix=2
+        - id: msvc-inventario
+          uri: lb://msvc-inventario
+          predicates:
+            - Path=/api/inventario/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: default
+                statusCodes: 500
+                fallbackUri: forward:/api/inventario/products/getByProductId/Pantaloneta123
+            - StripPrefix=2
+        - id: msvc-registro-ventas
+          uri: lb://msvc-registro-ventas
+          predicates:
+            - Path=/api/registro-ventas/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: default
+                statusCodes: 500
+                fallbackUri: forward:/api/inventario/products/getByProductId/Pantaloneta123
+            - StripPrefix=2
+        - id: msvc-reporte-ventas
+          uri: lb://msvc-reporte-ventas
+          predicates:
+            - Path=/api/reporte-ventas/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: default
+                statusCodes: 500
+                fallbackUri: forward:/api/inventario/products/getByProductId/Pantaloneta123
+            - StripPrefix=2
+        - id: msvc-punto-venta
+          uri: lb://msvc-punto-venta
+          predicates:
+            - Path=/api/punto-venta/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: default
+                statusCodes: 500
+                fallbackUri: forward:/api/inventario/products/getByProductId/Pantaloneta123
+            - StripPrefix=2

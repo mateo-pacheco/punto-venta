@@ -69,4 +69,11 @@ public class ProductController {
         productsService.delete(productId);
         return ResponseEntity.ok().build();
     }
+
+    @PutMapping("/updateStock/{productId}/{quantity}")
+    public ResponseEntity<Void> updateStock(@PathVariable("productId") String productId,
+            @PathVariable("quantity") Integer quantity) {
+        productsService.updateStock(quantity, productId);
+        return ResponseEntity.ok().build();
+    }
 }

@@ -1,4 +1,4 @@
-<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/132.0.0.0 Safari/537.36 Edg/132.0.0.0" version="26.0.5">
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/133.0.0.0 Safari/537.36 Edg/133.0.0.0" version="26.0.11">
   <diagram name="Page-1" id="y4nw6dKIO7EHeoRrIgSn">
     <mxGraphModel dx="2132" dy="1665" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
@@ -142,10 +142,10 @@
           <mxGeometry y="52" width="320" height="26" as="geometry" />
         </mxCell>
         <mxCell id="8bvSWyz-NWfXJnBT8z1O-12" value="" style="whiteSpace=wrap;html=1;aspect=fixed;" parent="1" vertex="1">
-          <mxGeometry x="2380" y="-160" width="780" height="780" as="geometry" />
+          <mxGeometry x="2390" y="-150" width="780" height="780" as="geometry" />
         </mxCell>
         <mxCell id="8bvSWyz-NWfXJnBT8z1O-13" value="Reporte Ventas" style="swimlane;fontStyle=0;childLayout=stackLayout;horizontal=1;startSize=26;fillColor=none;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
-          <mxGeometry x="2470" y="-55" width="320" height="170" as="geometry" />
+          <mxGeometry x="2470" y="-90" width="320" height="170" as="geometry" />
         </mxCell>
         <mxCell id="8bvSWyz-NWfXJnBT8z1O-14" value="+ Reporte_id : int" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="8bvSWyz-NWfXJnBT8z1O-13" vertex="1">
           <mxGeometry y="26" width="320" height="26" as="geometry" />
@@ -153,7 +153,7 @@
         <mxCell id="8bvSWyz-NWfXJnBT8z1O-15" value="+ Fecha_generacion: datatime" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="8bvSWyz-NWfXJnBT8z1O-13" vertex="1">
           <mxGeometry y="52" width="320" height="26" as="geometry" />
         </mxCell>
-        <mxCell id="8bvSWyz-NWfXJnBT8z1O-16" value="+ Total _ventas :&amp;nbsp; decimal&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;+ Total_productos_vendidos : int&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;+ Ventas_promedio: decimal&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="8bvSWyz-NWfXJnBT8z1O-13" vertex="1">
+        <mxCell id="8bvSWyz-NWfXJnBT8z1O-16" value="+ Ingreso _ventas :&amp;nbsp; decimal&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;+ Total_productos_vendidos : int&lt;/div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;div&gt;+ Total_ventas: int&lt;/div&gt;" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;whiteSpace=wrap;html=1;" parent="8bvSWyz-NWfXJnBT8z1O-13" vertex="1">
           <mxGeometry y="78" width="320" height="92" as="geometry" />
         </mxCell>
         <mxCell id="8bvSWyz-NWfXJnBT8z1O-19" value="Reportes DB" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" parent="1" vertex="1">

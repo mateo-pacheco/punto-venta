@@ -28,6 +28,7 @@ public class SaleServices {
 
     @Transactional(readOnly = true)
     public List<Sale> getByProductId(String productId) {
+        System.out.println(saleDomainRepository.getByProductId(productId));
         return saleDomainRepository.getByProductId(productId);
     }
 

@@ -17,6 +17,6 @@ public interface ProductsRepositoryDomain {
     public boolean exist(String productsId);
     public List<Products> getAllByStockAndSuppliers(Integer stockProduct, String suppliersId);
     public void updateStock(String suppliersId, Integer MinimumStock, Integer newStock);
-    public Products updateOneStock(Integer stock, String productId);
+    public void updateOneStock(Integer stock, String productId);
     public void deleteProductsBySupplierId(String supplierId);
 }

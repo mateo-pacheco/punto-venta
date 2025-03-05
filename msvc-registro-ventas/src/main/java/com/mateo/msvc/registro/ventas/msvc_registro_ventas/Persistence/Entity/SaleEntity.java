@@ -35,10 +35,10 @@ public class SaleEntity {
     @Column(name = "quantity_products", nullable = false)
     private Integer quantityProducts;
 
-    @Column(name = "unit_price", nullable = false, columnDefinition = "Decimal(5,2)")
+    @Column(name = "unit_price", nullable = false, columnDefinition = "Decimal(10,2)")
     private Double unitPrice;
 
-    @Column(name = "total_price", nullable = false, columnDefinition = "Decimal(5,2)")
+    @Column(name = "total_price", nullable = false, columnDefinition = "Decimal(10,2)")
     private Double totalPrice;
 
     @Column(name = "client_name", nullable = false)

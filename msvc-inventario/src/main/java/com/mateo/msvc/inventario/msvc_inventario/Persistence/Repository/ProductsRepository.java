@@ -87,9 +87,8 @@ public class ProductsRepository implements ProductsRepositoryDomain{
     }
 
     @Override
-    public Products updateOneStock(Integer stock, String productId){
-        ProductsEntity productsEntity = productsCrudRepository.updateOneStock(stock, productId);
-        return productsMapper.toProduct(productsEntity);
+    public void updateOneStock(Integer stock, String productId){
+        productsCrudRepository.updateOneStock(stock, productId);
     }
 
     @Override

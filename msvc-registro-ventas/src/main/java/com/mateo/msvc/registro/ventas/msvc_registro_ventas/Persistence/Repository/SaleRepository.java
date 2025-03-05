@@ -38,6 +38,7 @@ public class SaleRepository implements SaleDomainRepository {
     @Override
     public List<Sale> getByProductId(String productId) {
         List<SaleEntity> saleEntities = saleCrudRepository.findAllByProductId(productId);
+        System.out.println(saleEntities);
         return saleMapper.toSales(saleEntities);
     }
 

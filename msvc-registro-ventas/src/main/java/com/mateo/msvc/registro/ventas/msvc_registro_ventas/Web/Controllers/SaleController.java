@@ -1,4 +1,4 @@
-package com.mateo.msvc.registro.ventas.msvc_registro_ventas.Web;
+package com.mateo.msvc.registro.ventas.msvc_registro_ventas.Web.Controllers;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -26,42 +26,43 @@ public class SaleController {
     private SaleServices saleServices;
 
     @GetMapping("/getAllSales")
-    public ResponseEntity<List<Sale>> getAll(){
+    public ResponseEntity<List<Sale>> getAll() {
         return ResponseEntity.ok(saleServices.getAll());
     }
 
     @GetMapping("/getSaleById/{saleId}")
-    public ResponseEntity<Sale> getById(@PathVariable("saleId") Integer saleId){
+    public ResponseEntity<Sale> getById(@PathVariable("saleId") Integer saleId) throws InterruptedException {
         return ResponseEntity.ok(saleServices.getById(saleId));
     }
 
     @GetMapping("/getSalesByProductId/{productId}")
-    public ResponseEntity<List<Sale>> getByProductId(@PathVariable("productId") String productId){
+    public ResponseEntity<List<Sale>> getByProductId(@PathVariable("productId") String productId) throws InterruptedException {
         return ResponseEntity.ok(saleServices.getByProductId(productId));
     }
 
     @GetMapping("/getSalesByClientId/{clientId}")
-    public ResponseEntity<List<Sale>> getByClientId(@PathVariable("clientId") String clientId){
+    public ResponseEntity<List<Sale>> getByClientId(@PathVariable("clientId") String clientId) {
         return ResponseEntity.ok(saleServices.getByClientId(clientId));
     }
 
     @GetMapping("/getSalesByDateSaleBetween/{dateStart}/{dateEnd}")
-    public ResponseEntity<List<Sale>> getByDateSaleBetween(@PathVariable("dateStart") LocalDate dateStart,@PathVariable("dateEnd") LocalDate dateEnd){
+    public ResponseEntity<List<Sale>> getByDateSaleBetween(@PathVariable("dateStart") LocalDate dateStart,
+            @PathVariable("dateEnd") LocalDate dateEnd) {
         return ResponseEntity.ok(saleServices.getByDateSaleBetween(dateStart, dateEnd));
     }
 
     @PostMapping("/saveSale")
-    public ResponseEntity<Sale> save(@RequestBody Sale sale){
+    public ResponseEntity<Sale> save(@RequestBody Sale sale) {
         return ResponseEntity.status(HttpStatus.CREATED).body(saleServices.save(sale));
     }
 
     @PutMapping("/updateSale")
-    public ResponseEntity<Sale> update(@RequestBody Sale sale){
+    public ResponseEntity<Sale> update(@RequestBody Sale sale) {
         return ResponseEntity.status(HttpStatus.CREATED).body(saleServices.update(sale));
     }
 
     @DeleteMapping("/deleteSale/{saleId}")
-    public ResponseEntity<Void> delete(@PathVariable("saleId") Integer saleId){
+    public ResponseEntity<Void> delete(@PathVariable("saleId") Integer saleId) {
         saleServices.delete(saleId);
         return ResponseEntity.ok().build();
     }

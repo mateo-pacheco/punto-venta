@@ -73,8 +73,8 @@ public class ProductsService {
     }
 
     @Transactional
-    public Products updateStock(Integer stock, String productId){
-        return productsRepositoryDomain.updateOneStock(stock, productId);
+    public void updateStock(Integer stock, String productId){
+        productsRepositoryDomain.updateOneStock(stock, productId);
     }
 
     @Transactional

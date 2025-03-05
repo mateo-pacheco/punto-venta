@@ -31,8 +31,8 @@ public interface ProductsCrudRepository extends CrudRepository<ProductsEntity, S
 
         @Modifying
         @Transactional
-        @Query(value = "UPDATE products SET stock_products = :stock WHERE product_id = :productId", nativeQuery = true)
-        ProductsEntity updateOneStock(@Param("stock") Integer stock, @Param("productId") String productId);
+        @Query(value = "UPDATE products SET stock_product = :stock WHERE product_id = :productId", nativeQuery = true)
+        void updateOneStock(@Param("stock") Integer stock, @Param("productId") String productId);
 
         @Modifying
         @Transactional
