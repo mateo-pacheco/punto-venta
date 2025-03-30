@@ -26,6 +26,9 @@
 		},
 		{
 			"path": "msvc-oauth"
+		},
+		{
+			"path": "docker-compose"
 		}
 	],
 	"settings": {

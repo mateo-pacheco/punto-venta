@@ -1,0 +1,130 @@
+services:
+  eureka-server:
+    container_name: eureka-server
+    image: mateo158/eureka-server:latest
+    ports:
+      - "8761:8761"
+    restart: always
+    networks:
+      - msvc-practica
+  mysql:
+    container_name: mysql
+    image: mysql:9.2.0
+    environment:
+      - MYSQL_ROOT_PASSWORD=Fazt12345
+    ports:
+      - "3307:3306"
+    restart: always
+    networks:
+      - msvc-practica
+  msvc-clientes:
+    container_name: msvc-clientes
+    image: mateo158/msvc-clientes:latest
+    environment:
+      - MYSQL_URL=mysql
+      - MYSQL_DATABASE=clientes_db
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=Fazt12345
+    depends_on:
+      - mysql
+      - eureka-server
+    restart: always
+    networks:
+      - msvc-practica
+  msvc-inventario:
+    container_name: msvc-inventario
+    image: mateo158/msvc-inventario
+    environment:
+      - MYSQL_URL=mysql
+      - MYSQL_DATABASE=inventario_db
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=Fazt12345
+    depends_on:
+      - eureka-server
+      - mysql
+    restart: always
+    networks:
+      - msvc-practica
+  msvc-registro-ventas:
+    container_name: msvc-registro-ventas
+    image: mateo158/msvc-registro-ventas
+    environment:
+      - MYSQL_URL=mysql
+      - MYSQL_DATABASE=registro_ventas_db
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=Fazt12345
+    depends_on:
+      - eureka-server
+      - mysql
+    restart: always
+    networks:
+      - msvc-practica
+  msvc-reporte-ventas:
+    container_name: msvc-reporte-ventas
+    image: mateo158/msvc-reporte-ventas
+    environment:
+      - MYSQL_URL=mysql
+      - MYSQL_DATABASE=reporte_ventas_db
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=Fazt12345
+    depends_on:
+      - eureka-server
+      - mysql
+    restart: always
+    networks:
+      - msvc-practica
+  msvc-punto-venta:
+    container_name: msvc-punto-venta
+    image: mateo158/msvc-punto-venta
+    depends_on:
+      - eureka-server
+    restart: always
+    networks:
+      - msvc-practica
+  msvc-users:
+   container_name: msvc-users
+   image: mateo158/msvc-users:latest
+   environment:
+     - MYSQL_URL=mysql
+     - MYSQL_DATABASE=reporte_ventas_db
+     - MYSQL_USER=root
+     - MYSQL_PASSWORD=Fazt12345
+   depends_on:
+     - eureka-server
+     - mysql
+   restart: always
+   networks:
+     - msvc-practica
+  msvc-oauth:
+    container_name: msvc-oauth
+    image: mateo158/msvc-oauth:latest
+    ports:
+      - "9000:9000"
+    depends_on:
+      - eureka-server
+      - msvc-users
+    restart: always
+    networks:
+     - msvc-practica
+  msvc-gateway-server:
+    container_name: msvc-gateway-server
+    image: mateo158/msvc_gateway_server:latest
+    ports:
+      - "8090:8090"
+    environment:
+      - IP_ADDR=http://192.168.100.55:9000
+    depends_on:
+      - eureka-server
+      - msvc-clientes
+      - msvc-inventario
+      - msvc-registro-ventas
+      - msvc-reporte-ventas
+      - msvc-punto-venta
+      - msvc-users
+      - msvc-oauth
+    restart: always
+    networks:
+     - msvc-practica
+networks:
+  msvc-practica:
+    driver: bridge
